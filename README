@@ -2,6 +2,14 @@ THOT Patrol
 Version: 1.1
 22 February 2018
 
+This is a Software Engineering Project in C language. A chat application was designed and developed in which a user can 
+send messages as well as react other users’ messages. Each user can talk to each of the other users one-by-one at the same time. 
+The application manages user accounts including creating accounts, adding, and deleting contacts for each user. 
+The whole project includes specifying and documenting the software program, designing data structures and algorithms, 
+designing software modules, writing original source code, testing and debugging the software program, 
+and collaborating and communicating effectively in a team. 
+Please refer to Software_Specification.pdf and User_Manual.pdf files inside doc directory for further reference.
+
 General Instructions:
 
 This is an alpha version of our instant messaging program. In order to install our program, simply type "make"

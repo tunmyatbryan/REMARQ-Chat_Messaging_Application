@@ -1,0 +1,68 @@
+/*
+Header file for struct.c
+Change Log:
+3/1 7:14 PM - Tun	- implement the data structure according to the SoftwareSpec
+*/
+
+#ifndef STRUCT_H
+#define STRUCT_H
+
+#define SLEN 20
+
+#include <stdlib.h>
+
+typedef struct FriendsList FLIST;
+typedef struct FriendsListEntry FENTRY;
+typedef struct User USER;
+typedef struct Personal PERSONAL;
+
+struct FriendsList{
+	unsigned int Length;
+
+/*
+Not sure about we need Client in FriendsList because we have new user in FriendsListEntry */
+
+/*	USER *Client;	*/
+	FENTRY *First;
+	FENTRY *Last;
+};
+
+struct FriendsListEntry{
+	FLIST *List;
+	FENTRY *Next;
+	FENTRY *Prev;
+	USER *Friend;
+};
+
+struct User{
+	char FirstName[SLEN+1];
+	char LastName[SLEN+1];
+	char UserID[SLEN+1];
+	char Password[SLEN+1];
+	PERSONAL *Profile;
+};
+
+struct Personal{
+	USER *Master;
+	char Handle[SLEN+1];
+	FLIST *Friends;
+};
+
+/* creates a set of Friends */
+FLIST *CreateFriendsList();
+
+/* deletes a set of Friends */
+void DeleteFriendsList(FLIST *list);
+
+/*delete Friends entry*/
+USER *DeleteFriendsEntry(FENTRY *e);
+
+/*append a set of Friends */
+void AppendFriendsList(FLIST *list, USER *NewUser);
+
+/*create a User*/
+USER *CreateUser(char *FirstN, char *LastN, char *UID, char *PassW, PERSONAL *NewProfile);
+
+/*delete a User*/
+void DeleteUser(USER *OldUser);
+

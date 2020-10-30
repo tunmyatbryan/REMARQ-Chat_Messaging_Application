@@ -1,0 +1,11 @@
+THOT Patrol
+Version: 1.1
+22 February 2018
+
+General Instructions:
+
+This is an alpha version of our instant messaging program. In order to install our program, simply type "make"
+after extracting the file, for more detailed instructions please see our INSTALL file (vi INSTALL). Any
+questions or concerns about the source code can be answered by seeing our Chat_UserManual.pdf
+file.
+

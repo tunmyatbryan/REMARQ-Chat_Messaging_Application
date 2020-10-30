@@ -1,0 +1,15 @@
+Installation Instructions:
+
+To install our instant messenger, first start your computers linux
+terminal. Then exract the file by typing the command:
+                tar -xvzf  CHATNAME______GOESHERE.tar.gz
+
+After extracting the file, go into the bin directory ("cd bin")
+where you'll be able to access the game. You can make sure the file is
+executable by typing "chmod +x Remarq".
+Now type "make all" and afterwards do "./Remarq"
+Congradulations, you have successfuly installed and ran Remarq.
+
+In order to acces our source code, go in the src directory ("cd src"). There
+you may freely view our code. Any concerns regarding the legalitiess of using
+our code can be found in the COPYRIGHT file (vi COPYRIGHT). 

@@ -1,0 +1,40 @@
+# ############################################################
+# 02/22/2018		BIANCA		MAKEFILE START
+#
+# #############################################################
+
+# Variables
+CC     = gcc
+DEBUG  = -g -DDEBUG
+CFLAGS = -ansi -Wall -std=c99 -c -g
+LFLAGS = -ansi -Wall -std=c99
+
+# Libs
+GTKINC	= `PKG_CONFIG_PATH=/usr/share/pkgconfig pkg-config --cflags gtk+-2.0`
+GTKLIBS	= `PKG_CONFIG_PATH=/usr/share/pkgconfig pkg-config --libs gtk+-2.0`
+INC	= $(GTKINC)
+LIBS	= $(GTKLIBS)
+
+OPTS	= -g
+
+# Default target
+all: client server2 FileIO
+
+
+# Object Files
+#################### Generate executables  ####################
+
+
+# Simple object files for testing
+client: client.c
+	gcc client.c -ansi -g -o client
+
+server2: server2.c
+	gcc server2.c -ansi -g -o server2
+
+FileIO: FileIO.c
+	gcc FileIO.c -ansi -g -o FileIO
+
+clean:
+	rm -rf *.o $(PROJECT)
+	rm -rf client server2 FileIO

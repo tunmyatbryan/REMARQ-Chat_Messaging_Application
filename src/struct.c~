@@ -1,0 +1,143 @@
+#include <stdlib.h>
+#include <assert.h>
+#include "struct.h"
+
+/*Create a new friend list */
+FLIST *CreateFriendsList()
+{
+	FLIST *newList = (FLIST*)malloc(sizeof(FLIST));
+
+	if (newList != NULL)
+	{
+		newList->Length = 0;
+		newList->First = NULL;
+		newList->Last = NULL;
+/*		newList->Client = NewClient; */
+	}
+
+	assert(newList);
+
+	return newList;
+}
+
+/*Delete friend list */
+void DeleteFriendsList(FLIST *list);
+{
+	FENTRY *e, *n;
+	USER *u;
+	assert(list);
+	e = list->First;
+	while(e)
+	{
+		n = e->Next;
+		u = DeleteFriendsEntry(e);
+		DeleteMove(u);
+		e = n;
+	}
+	
+	free(list);
+}
+
+/*Delete a User entry*/
+USER *DeleteFriendsEntry(FENTRY *e);
+{
+	assert(e);
+	
+	if(e->Prev == NULL)
+	{
+		e->List->First = e->Next;
+		if(e->Next)
+			e->Next->Prev = NULL;
+	
+	}
+	else if (e->Next == NULL)
+	{
+		e->List->Last = e->Prev;
+		if(e->Prev)
+			e->Prev->Next = NULL;
+	}
+	else 
+	{
+		e->Prev->Next = e->Next;
+		e->Next->Prev = e->Prev;
+	}
+	
+	e->List->Length--;
+	USER *u;
+	assert(e);
+	u = e->Friend;
+	free(e);
+	return(m);
+}
+
+/*Append Friend List*/
+void AppendFriendsList(FLIST *list, USER *NewUser);
+{
+	assert(list);
+	assert (NewUser);
+
+	FENTRY *e = NULL;
+	e = (FENTRY*)malloc(sizeof(FENTRY));
+	assert(e);
+
+	e->List = list;
+	e->Next = NULL;
+	e->Prev = NULL;
+	e->Friend = NewUser;
+
+	if (list->Last)
+	{		
+		e->List = list;
+		e->Next = NULL;
+		e->Prev = list->Last;
+		list->Last->Next = e;
+		list->Last = e;
+	}
+
+	else
+	{
+		e->List = list;
+		e->Next = NULL;
+		e->Prev = NULL;
+		list->First = e;
+		list->Last = e;
+	}
+
+	list->Length++;
+
+}
+
+
+/*Create a User*/
+USER *CreateUser(char *FirstN, char *LastN, char *UID, char *PassW, PERSONAL NewProfile)
+{
+	USER *user = (USER *)malloc(sizeof(USER));
+	if (user == NULL)
+	{
+		return NULL;
+	}
+	
+	strncpy(user->FirstName, FirstN, SLEN);
+	user->FirstName[SLEN] = '\0'
+
+	strncpy(user->LastName, LastN, SLEN);
+	user->LastName[SLEN] = '\0'
+
+	strncpy(user->UserID, UID, SLEN);
+	user->UserID[SLEN] = '\0'
+
+	strncpy(user->Password, PassW, SLEN);
+	user->Password[SLEN] = '\0'
+
+/*I don't know how to create PERSONAL *Profile */
+
+	return user;
+}
+
+void DeleteUser(USER *OldUser);
+{
+	assert(OldUser);
+	
+	free(OldUser);  	
+}
+
